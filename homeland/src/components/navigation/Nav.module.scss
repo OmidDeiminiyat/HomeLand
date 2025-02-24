@@ -1,0 +1,58 @@
+@import './../../helper/colors.module.scss';
+@import './../../helper/fonts.module.scss';
+.nav{
+        background-color: $dark;
+        color: $light;
+        height: 70px;
+       // clip-path: polygon(0 0, 100% 0, 100% 100px, 20% 50px, 0 100px);
+
+    .firstDiv{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 80%;
+        margin-left: 10%;
+        
+        hgroup{
+            background-color: $logoBack;
+            padding: 0;
+            margin-top: 10px;
+            border: 1px solid $dark;
+            h3{
+                font-size: 30px;
+                padding: 10px;
+                margin: 0;
+            }
+        }
+
+        ul{
+            display: flex;
+            flex-direction: row;
+           li{
+            padding-left: 12px;
+            list-style: none;
+            
+            a{
+                color: $light;
+                text-decoration: none;
+                font-family: "Odibee Sans", serif;
+            }
+           }
+           .secondDiv{
+            padding: 0;
+            margin: 0;
+            input{
+                margin-left: 12px;
+                height: 15px;
+               }
+               span{
+                background-color: $searchBack;
+                padding: 1.2px;
+               }
+           }
+           
+        }
+    }
+    
+    
+}
