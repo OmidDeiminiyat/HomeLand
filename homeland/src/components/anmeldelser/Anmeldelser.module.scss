@@ -1,5 +1,6 @@
+
+@use './../../helper/fonts.module.scss' as fonts;
 @import './../../helper/colors.module.scss';
-@import './../../helper/fonts.module.scss';
 .anmel {
     width: 100%;
     margin-top: 400px;
@@ -11,13 +12,14 @@
         position: relative;
         .mainDiv{
             background-color: $anmel;
+            cursor: pointer;
             article{
         
                 padding-top: 10px;
                 text-align: center;
                 width: 80%;
                 margin-left: 10%;
-                height: 110px;
+                height: 130px;
                 header{
                     text-align: center;
                 }
@@ -27,7 +29,7 @@
         .formSection {
 
             position: absolute;
-            padding-top: 10px;
+            padding-top: 20px;
             text-align: center;
             width: 100%;
             top: 0;

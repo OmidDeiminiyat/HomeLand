@@ -12,7 +12,7 @@ export const Nav = () => {
                         <h3>HomeLands</h3>
                     </hgroup>
                     <ul>
-                        <li><Link to="/pages/">Forside</Link></li>
+                        <li><Link to="/">Forside</Link></li>
                         <li><Link to="/pages/Boliger">Boliger til salg</Link></li>
                         <li><Link to="/pages/Login">Log in</Link></li>
                         <div className={style.secondDiv}>

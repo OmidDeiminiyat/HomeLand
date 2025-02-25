@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import style from './Staff.module.scss';
 export const Staff = () => {
     const [Staff, setStaff] = useState([]);
 
@@ -10,18 +10,23 @@ export const Staff = () => {
         .catch((error) => console.error("Error fetching images:", error));
     }, []);
     
+    console.log(Staff);
+    
     return(
         <>
-            <section>
+            <section className={style.staff}>
                 <h3>Mæd vores ansatte</h3>
                 <div>
+                {Staff.map((items) => (
                     <figure>
-                        <img src="" alt="" />
+                        <img src={items.image} alt={items.name} />
+                        <hr />
                         <figcaption>
-                            <h3>test</h3>
-                            <p>ooopd te st fn ufjfjfjf</p>
+                            <h3>{items.firstnam} {items.lastname}</h3>
+                            <p>{items.position}</p>
                         </figcaption>
                     </figure>
+                    ))}
                 </div>
             </section>
         </>

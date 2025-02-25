@@ -1,0 +1,30 @@
+@use './../../helper/fonts.module.scss' as fonts;
+@use './../../helper/colors.module.scss' as *;
+.loginComp{
+    width: 20%;
+    margin-left: 10%;
+    min-height: 600px;
+    form{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        .Err{
+            color: $logoBack;
+        }
+        .butts{
+            display: flex;
+            gap: 1rem;
+            button{
+                background-color: $dark;
+                color: $light;
+                border: none;
+                padding: 9px;
+                border-radius: 6px;
+            }
+        }
+    }
+}
+
+
+// info@webudvikler.dk
+// password
