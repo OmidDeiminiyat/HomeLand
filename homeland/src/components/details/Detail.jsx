@@ -14,6 +14,10 @@ export const Details = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isMapOpen, setisMapOpen] = useState(false);
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+
   useEffect(() => {
     fetch(`https://api.mediehuset.net/homelands/homes/${id}`)
       .then((response) => response.json())
@@ -65,6 +69,41 @@ export const Details = () => {
     );
   };
 
+ 
+  const handleAddFavorite = async (homeId) => {
+    setLoading(true);
+    setError(null);
+    const body = new URLSearchParams();
+    body.append("home_id", homeId)
+ 
+    const userDataString = sessionStorage.getItem('user');
+    const token = JSON.parse(userDataString);
+    
+    try {
+      const response = await fetch('https://api.mediehuset.net/homelands/favorites', {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token.access_token}`,
+        },
+       body: body
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to add favorite');
+      }
+
+      const data = await response.json();
+      console.log('Favorite added:', data);
+    } catch (err) {
+      setError(err.message);
+      console.error('Error:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className={style.allOps}>
       <div style={divStyle}> </div>
@@ -82,10 +121,13 @@ export const Details = () => {
             </span> 
             <span onClick={openMap} style={{ cursor: "pointer" }}><MdLocationCity /></span> 
             <span><FaLocationDot /></span> 
-            <span><CiHeart /></span>
+            <span onClick={() => handleAddFavorite(house.id)} disabled={loading}><CiHeart /></span>
+           
+      {error && <p style={{ color: "red" }}>{error}</p>}
+            
           </div>
           <div>
-            <h3>Kontantpris: {house.price} </h3>
+            <h3>Kontantpris: {house.price} </h3> 
             <p>Udbetaling: {house.payout} </p>
             <p>Ejerudgift per måned: {house.cost} </p>
           </div>

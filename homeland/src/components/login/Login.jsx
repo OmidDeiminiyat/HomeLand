@@ -27,7 +27,7 @@ export function LoginComp() {
         const data = await response.json();
   
         if (response.ok) {
-          localStorage.setItem("user", JSON.stringify(data));
+          sessionStorage.setItem("user", JSON.stringify(data));
           alert("Login successful!");
           window.location.href = "/admin"; 
         } else {
